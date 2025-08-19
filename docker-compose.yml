@@ -1,0 +1,16 @@
+services:
+  # AHA MCP Server
+  mcp-aha-service:
+    build: .
+    container_name: mcp-aha-service
+    ports:
+      - "9004:9004"
+    environment:
+      - AHA_API_TOKEN=<AHA_API_TOKEN>
+      - AHA_DOMAIN=<AHA_DOMAIN>
+      - MCP_TRANSPORT_TYPE=streamable-http
+      - MCP_SERVER_AHA_HOST=0.0.0.0
+      - MCP_SERVER_AHA_PORT=9004
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
